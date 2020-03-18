@@ -5,11 +5,15 @@ import org.springframework.stereotype.Service;
 import wat.edu.pl.herokuservervisitapp.dto.User;
 import wat.edu.pl.herokuservervisitapp.dto.UserCreds;
 
+import java.util.LinkedList;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService
 {
     private User user;
     private String password;
+    private List<String> listOfSpec;
 
     @Autowired
     public UserServiceImpl() {
@@ -20,11 +24,14 @@ public class UserServiceImpl implements UserService
     {
         user = new User(1, "kowalski@wp.pl", "Jan", "Kowalski", "19800812", 0, "600000000");
         password = "abc1234";
+        listOfSpec = new LinkedList<>();
+        listOfSpec.add("laryngolog");
+        listOfSpec.add("ortopeda");
     }
 
     @Override
-    public Boolean checkRightToBook(int visitId) {
-        if(visitId == 1 || visitId == 2 || visitId == 6 || visitId == 7 || visitId == 10)
+    public boolean checkRightToBook(String selectedDoctorSpec) {
+        if(listOfSpec.contains(selectedDoctorSpec))
             return true;
         else
             return false;

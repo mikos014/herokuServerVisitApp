@@ -19,10 +19,13 @@ public class UserController
         this.userService = userService;
     }
 
-    @GetMapping("/api/rightToBook/{visitId}/{userId}")
-    public ResponseEntity<Boolean> checkRightToBook(@PathVariable("visitId")int visitId, @PathVariable("userId") int userId)
+    @GetMapping("/api/rightToBook/{doctorSpec}/{userId}")
+    public ResponseEntity<Boolean> checkRightToBook(@PathVariable("doctorSpec")String spec, @PathVariable("userId") int userId)
     {
-        return new ResponseEntity<>(userService.checkRightToBook(visitId), HttpStatus.OK);
+        if (userService.checkRightToBook(spec))
+            return new ResponseEntity<>(HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
     }
 
     @PostMapping("/api/changeEmail")

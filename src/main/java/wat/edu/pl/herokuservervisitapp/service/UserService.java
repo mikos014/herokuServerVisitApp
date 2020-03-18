@@ -6,7 +6,7 @@ import wat.edu.pl.herokuservervisitapp.dto.UserCreds;
 
 public interface UserService
 {
-    Boolean checkRightToBook(int visitId);
+    boolean checkRightToBook(String spec);
     boolean changeEmail(UserCreds userCreds);
     boolean changePassword(UserCreds userCreds);
     boolean changeNumber(UserCreds userCreds);
