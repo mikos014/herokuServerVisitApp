@@ -20,7 +20,7 @@ public class UserController
     }
 
     @GetMapping("/api/rightToBook/{doctorSpec}/{userId}")
-    public ResponseEntity<Boolean> checkRightToBook(@PathVariable("doctorSpec")String spec, @PathVariable("userId") int userId)
+    public ResponseEntity<Boolean> checkRightToBook(@PathVariable("doctorSpec")String spec, @PathVariable("userId") String userId)
     {
         if (userService.checkRightToBook(spec))
             return new ResponseEntity<>(HttpStatus.OK);
