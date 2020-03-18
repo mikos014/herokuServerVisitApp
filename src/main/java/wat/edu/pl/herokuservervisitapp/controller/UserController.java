@@ -19,7 +19,7 @@ public class UserController
         this.userService = userService;
     }
 
-    @GetMapping("/api/rightToBook")
+    @PostMapping("/api/rightToBook")
     public ResponseEntity<Boolean> checkRightToBook(@RequestParam String spec, @RequestParam String userId)
     {
         if (userService.checkRightToBook(spec))
